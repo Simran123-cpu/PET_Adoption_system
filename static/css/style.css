@@ -1,0 +1,318 @@
+/* login.html css */
+
+body {
+    place-items: center;
+    display: grid;
+}
+
+p {
+    font-size: 19px;
+    font-family: Poppins;
+    width: auto;
+    margin-top: 3%;
+    margin-bottom: 10px;
+}
+
+
+
+h2 {
+    font-family: Poppins;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+.main-div {
+    margin-top: 5%;
+    background-color: rgba(255, 171, 37, 0.286);
+    height: 500px;
+    width: 900px;
+    padding: 0px;
+    display: flex;
+    text-align: center;
+    transition: width 0.5s;
+
+
+
+
+}
+
+.pet-pic {
+    height: 500px;
+    width: 700px;
+    object-fit: cover;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    ;
+    order: 1;
+}
+
+.img {
+    flex: 1;
+    overflow: hidden;
+    transition: flex 0.5s;
+    order: 1;
+}
+
+.login {
+    margin-left: 0%;
+    margin-right: 0%;
+    flex: 1;
+    text-align: left;
+    width: 100px;
+    height: 100px;
+    order: 2;
+    padding: 2%;
+
+
+}
+
+.login input {
+    width: calc(100% - 70px);
+    height: 30px;
+    /* Adjusted text box size */
+    border: none;
+    border-radius: 1%;
+    border-style: none;
+    margin-bottom: 5%;
+    margin-left: 0%;
+
+}
+
+.otp-button {
+    width: 50%;
+    padding: 10px;
+    background-color: #f9a33a;
+    color: white;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    .main-div {
+        width: auto
+            /* Adjust width for smaller screens */
+    }
+
+    .img {
+        visibility: hidden;
+        /* Hide image container for smaller screens */
+    }
+
+    .login {
+        width: 100%;
+        /* Set full width for form container on smaller screens */
+    }
+}
+
+@media screen and (min-width: 200px) {
+    .img {
+        display: flex;
+        /* Show image for larger screens */
+    }
+}
+
+/*sign-up.html*/
+.login.html,
+sign-up.html {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+}
+
+body {
+    place-items: center;
+    display: grid;
+}
+
+p {
+    font-size: 19px;
+    font-family: Poppins;
+    width: auto;
+    margin-top: 3%;
+    margin-bottom: 10px;
+}
+
+
+
+h2 {
+    font-family: Poppins;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+.main-div {
+    margin-top: 5%;
+    background-color: rgba(255, 171, 37, 0.286);
+    height: 500px;
+    width: 800px;
+    padding: 0px;
+    display: flex;
+    text-align: center;
+    transition: width 0.5s;
+
+
+
+
+}
+
+.pet-pic {
+    height: 500px;
+    width: 400px;
+    object-fit: cover;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    ;
+    order: 2;
+}
+
+.img-2 {
+    flex: 1;
+    overflow: hidden;
+    transition: flex 0.5s;
+    order: 2;
+}
+
+.login {
+    margin-left: 5%;
+    flex: 1;
+    text-align: left;
+    width: 200px;
+    height: 100px;
+    order: 1;
+
+
+}
+
+.login input {
+    width: calc(100% - 20px);
+    height: 30px;
+    /* Adjusted text box size */
+    border: none;
+    border-radius: 1%;
+    border-style: none;
+    margin-bottom: 10px;
+}
+
+.otp-button {
+    width: 50%;
+    padding: 10px;
+    background-color: #f9a33a;
+    color: white;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    .main-div {
+        width: auto
+            /* Adjust width for smaller screens */
+    }
+
+    .img {
+        visibility: hidden;
+        /* Hide image container for smaller screens */
+    }
+
+    .login {
+        width: 100%;
+        /* Set full width for form container on smaller screens */
+    }
+}
+
+@media screen and (min-width: 200px) {
+    .img {
+        display: flex;
+        /* Show image for larger screens */
+    }
+}
+
+/*************Index.html******************/
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+    margin: auto;
+    top: 70%;
+    left: 50%;
+
+
+}
+
+.container {
+    background-color: #f0f0f0;
+    /* Grey background color */
+    padding: 20px;
+    /* Add padding for content */
+    margin-top: 5%;
+    max-width: 100%;
+    height: 300px;
+
+}
+
+.btn {
+    background-color: #ff7815;
+}
+
+.how-it-works-section {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    background: #f4f5f6;
+}
+
+.hiw-content-flex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.grooming-heading {
+    text-align: center;
+}
+
+.hiw-subtitle {
+    text-align: center;
+}
+
+.card-book {
+    text-align: center;
+}
+
+.banner-link button {
+    color: #fff;
+    background: #ff7815;
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    max-width: 340px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.cat-dog-img-container img {
+    display: inline-block;
+
+}
+
+.cat-looking-dog {
+    max-width: 100px;
+    margin-top: 70px;
+}
+
+.dog-holding-phone {
+    max-width: 160px;
+    margin-top: 10px;
+}
+
+/* Define transitions */
