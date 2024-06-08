@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pets</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Add custom styles here */
+        .pet-card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="row mt-4">
+            {% for pet in user_pets %}
+            <div class="col-md-4">
+                <div class="card pet-card">
+                    <div class="card-body">
+                        <img src="{{ pet.profile_picture }}" class="card-img-top" alt="{{ pet.name }}">
+                        <h5 class="card-title">{{ pet.name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ pet.breed }}</h6>
+                        <p class="card-text">Age: {{ pet.age }} years old</p>
+                        <p class="card-text">{{ pet.description }}</p>
+                        <!-- Form to remove a pet -->
+                        <form action="{{ url_for('remove_pet', pet_id=pet['_id']) }}" method="POST">
+
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, if required) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

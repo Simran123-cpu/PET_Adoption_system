@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ThePetNest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<style>
+    .carousel-item img {
+        height: 400px;
+        object-fit: cover;
+        width: 100%;
+        margin: auto;
+        top: 70%;
+        left: 50%;
+    }
+
+    .container {
+        background-color: #f0f0f0;
+        /* Grey background color */
+        padding: 20px;
+        /* Add padding for content */
+        margin-top: 5%;
+        max-width: 100%;
+        height: 300px;
+    }
+
+    .btn {
+        background-color: #ff7815;
+    }
+
+    .how-it-works-section {
+        padding-top: 5px;
+        padding-bottom: 15px;
+        background: #f4f5f6;
+    }
+
+    .hiw-content-flex {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .grooming-heading {
+        text-align: center;
+    }
+
+    .hiw-subtitle {
+        text-align: center;
+    }
+
+    .card-book {
+        text-align: center;
+    }
+
+    .banner-link button {
+        color: #fff;
+        background: #ff7815;
+        width: 100%;
+        height: 60px;
+        font-size: 22px;
+        max-width: 340px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .card-book {
+        padding: 0;
+        text-align: center;
+    }
+
+    .cat-dog-img-container {
+        font-size: 0;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    .svg img {
+        display: inline;
+    }
+
+    .cat-looking-dog {
+        max-width: 150px;
+    }
+
+    svg img {
+        display: inline;
+    }
+
+    .dog-holding-phone {
+        max-width: 250px;
+    }
+
+    .training img {
+        width: 60px;
+        height: 80px;
+    }
+
+    .boarding img {
+        width: 60px;
+    }
+
+    .service-flex {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .banner-content {
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        position: relative;
+        top: 300px;
+        background: #fff;
+        max-width: 1140px;
+        margin: auto;
+        padding: 30px;
+        box-shadow: rgba(0, 0, 0, .2) 0 1px 4px;
+    }
+</style>
+
+<body style="background-color: rgba(224, 130, 48, 0.124);">
+    <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary opacity-80" , border-bottom border-body
+        data-bs-theme="bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="\static\image\tpn-logo-v1.png" alt="Bootstrap" width="120"
+                    height="24" bg-light></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item text-dark-emphasis fs-5 fw-bold   ">
+                        <a id="login" class="nav-link " href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item text-dark-emphasis fs-5 fw-bold">
+                        <a id="Sign-up" class="nav-link" href="{{ url_for('Sign_up') }}">Sign_up</a>
+                    </li>
+                    <li class="nav-item text-dark-emphasis fs-5 fw-bold">
+                        <a id="Admin-panel" class="nav-link" href="{{ url_for('admin_panel') }}">Admin-panel</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">About</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Contact-Us</a></li>
+                        </ul> -->
+
+                    </li>
+                </ul>
+                {% if 'username' in session %}
+                <li class="nav-item dropdown btn btn-warning">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ session['username'] }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('create_pet') }}">Add Pets</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('mypets') }}">My pets</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('adoption_requests') }}">Requests</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+    </div>
+
+    <!-- Video section -->
+    <div class="video-container position-relative">
+        <video class="w-100 opacity-60" autoplay loop muted playsinline src="static/video/dogvideo.mp4"></video>
+        {% if 'username' in session %}
+        <div class="position-absolute top-50 start-50 translate-middle bg-light bg-opacity-50 p-4 rounded text-dark">
+            <h2 class="text-center">Welcome, {{ session['username'] }}</h2>
+        </div>
+        <div class=" position-absolute mb-lg-0 top-50 start-50 translate-middle-x opacity-75">
+
+            <div class="row">
+                <h1 class="mx-auto mt-5 m-xxl-auto p-2">Adopt Pets</h1>
+                {% for pet in three_pets %}
+                <div class="col-md-4 mb-4">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pet.name }}</h5>
+                            <p class="card-text"><strong>Breed:</strong> {{ pet.breed }}</p>
+                            <p class="card-text"><strong>Age:</strong> {{ pet.age }}</p>
+                            <p class="card-text"><strong>Description:</strong> {{ pet.description }}</p>
+                            <p class="card-text"><strong>Added by:</strong> {{ pet.username }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+
+    <section class="how-it-works-section mt-0 ">
+        <div class="container mx-auto mt-0 ">
+            <h2 class="grooming-heading hiw-heading">How it works?</h2>
+            <p class="hiw-subtitle"></p>
+            <div class="hiw-content-flex">
+                <div class="hiw-content-item">
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="" version="1.1" viewBox="-1 0 136 136.21852"
+                            width="40">
+                            <g id="surface1">
+                                <path
+                                    d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 "
+                                    style="stroke:none;fill-rule:nonzero;fill: #494949;fill-opacity:1;"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <h4>Search</h4>
+                    <p>Search pet care heroes by location and service.</p>
+                </div>
+
+                <div class="hiw-content-item">
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="-21 -47 682.66669 682" width="40">
+                            <path
+                                d="m552.011719-1.332031h-464.023438c-48.515625 0-87.988281 39.472656-87.988281 87.988281v283.972656c0 48.421875 39.300781 87.824219 87.675781 87.988282v128.871093l185.183594-128.859375h279.152344c48.515625 0 87.988281-39.472656 87.988281-88v-283.972656c0-48.515625-39.472656-87.988281-87.988281-87.988281zm-83.308594 330.011719h-297.40625v-37.5h297.40625zm0-80h-297.40625v-37.5h297.40625zm0-80h-297.40625v-37.5h297.40625zm0 0"
+                                fill="#494949"></path>
+                        </svg>
+                    </div>
+                    <h4>Book</h4>
+                    <p>Schedule your appointment at home.</p>
+                </div>
+
+                <div class="hiw-content-item">
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px"
+                            viewBox="0 0 469.333 469.333" style="enable-background:new 0 0 469.333 469.333;"
+                            xml:space="preserve">
+                            <g>
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M 434.979,42.667H85.333c-1.053,0-2.014,0.396-3.001,0.693l-8.594-28.241C71.005,6.138,62.721,0,53.333,0H10.667     C4.776,0,0,4.776,0,10.667V32c0,5.891,4.776,10.667,10.667,10.667h26.865l66.646,219.01l-24.891,29.039     c-9.838,11.477-14.268,27.291-9.74,41.713c5.791,18.445,22.07,30.237,40.839,30.237H416c5.891,0,10.667-4.776,10.667-10.667     v-21.333c0-5.891-4.776-10.667-10.667-10.667H110.385l33.813-39.448c0.85-0.992,1.475-2.112,2.12-3.219h206.703     c16.533,0,31.578-9.548,38.618-24.507l74.434-158.17c2.135-4.552,3.26-9.604,3.26-14.615v-3.021     C469.333,58.048,453.952,42.667,434.979,42.667z"
+                                            fill="#494949"></path>
+                                        <circle cx="128" cy="426.667" r="42.667" fill="#494949"></circle>
+                                        <circle cx="384" cy="426.667" r="42.667" fill="#494949"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                            <g> </g>
+                        </svg>
+                    </div>
+                    <h4>Relax</h4>
+                    <p>Sit back and relax! Your pet hero is on his way.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <div class="row mb-2 mt-auto ">
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary-emphasis">Learn</strong>
+                    <h3 class="mb-0">About Pet Adoption</h3>
+                    <p class="card-text mb-auto">Pet adoption is the process of transferring responsibility for a pet
+                        that was previously owned by another party. Common sources for adoptable pets are animal
+                        shelters, rescue groups, or other pet owners.</p>
+                    <a href="https://en.wikipedia.org/wiki/Pet_adoption"
+                        class="icon-link gap-1 icon-link-hover stretched-link">
+                        Continue reading
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="https://dm6g3jbka53hp.cloudfront.net/static-images/adopt-me-pet-02032021.jpg"
+                            class="bd-placeholder-img" width="200" height="250" alt="Image Placeholder">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-success-emphasis">Learn</strong>
+                    <h3 class="mb-0">About the government Initiative for Animals</h3>
+                    <div class="mb-1 text-body-secondary">Nov 11</div>
+                    <p class="mb-auto">The Animal Welfare Board of India is a statutory advisory body on Animal Welfare
+                        Laws and </p>
+                    <a href="https://awbi.gov.in/" class="icon-link gap-1 icon-link-hover stretched-link">
+                        Continue reading
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="https://www.kaleeyantey.com/wp-content/uploads/2023/04/Animal-Abuse-In-India-How-To-Report-An-Animal-Cruelty-Complaint.jpg"
+                            class="bd-placeholder-img" width="200" height="250" alt="Image Placeholder">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-book svg">
+        <img class="smart_image"
+            data-src="//dm6g3jbka53hp.cloudfront.net/static-images/homepage__partners-section__hooked-icon.svg"
+            alt="Hooked Icon"
+            src="//dm6g3jbka53hp.cloudfront.net/static-images/homepage__partners-section__hooked-icon.svg">
+        <h2 class="">Ready to book your next pet service?</h2>
+        <a class="banner-link" href="">
+            <button id="bookServiceBtn" class="btn btn-primary">Book a Service</button>
+
+        </a>
+        <div class="cat-dog-img-container">
+            <img alt="Online Veterinary Service for Cat" class="cat-looking-dog smart_image"
+                data-src="//dm6g3jbka53hp.cloudfront.net/static-images/cat-vet-30032020.png"
+                src="//dm6g3jbka53hp.cloudfront.net/static-images/cat-vet-30032020.png" class="">
+            <img alt="Online Veterinary Service for Dog" class="dog-holding-phone smart_image"
+                data-src="//dm6g3jbka53hp.cloudfront.net/static-images/dog-on-phone-30032020.png"
+                src="//dm6g3jbka53hp.cloudfront.net/static-images/dog-on-phone-30032020.png">
+        </div>
+    </div>
+    <!-- Display three pets on the home page -->
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">© 2024 All Copy Rights Reserved</p>
+        <p class="col-md-9  mb-0 text-body-secondary">Simran And Abhishek</p>
+        <a href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+
+        <!-- <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul> -->
+    </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+
+
+
+    <script>
+        // Get the login link element
+        var loginLink = document.getElementById("login-link");
+
+        // Add click event listener
+        loginLink.addEventListener("click", function (event) {
+            // Prevent the default action of the link
+            event.preventDefault();
+
+            // Load the login page
+            window.location.href = "gitdemo\login.html";
+        });
+        document.getElementById('bookServiceBtn').addEventListener('click', function () {
+            // Scroll to the top of the page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+
+</html>

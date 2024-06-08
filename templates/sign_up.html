@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<style>
+
+</style>
+
+<body>
+
+    <div class="main-div">
+
+        <div class="img-2">
+            <img class="pet-pic" src="../static/image/pet.jpg">
+        </div>
+
+        <div class="login">
+            <h2>CREATE AN ACCOUNT</h2>
+            <form action="/Sign_up" method="post">
+                <p class="Name"> Full Name </p>
+                <input type="text" name="fullname" placeholder="Enter Your Full Name">
+                <p class="Name">Set password </p>
+                <input type="password" name="password" placeholder="Enter Your Password">
+                <input type="submit" value="Sign-up">
+                <p>Already have an account?<a href="{{ url_for('login') }}">SIGN-IN</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        function getOTP() {
+            // Simulate asynchronous request to a backend
+            setTimeout(function () {
+                // After a delay, show a success message
+                alert("OTP sent successfully!");
+            }, 2000); // Simulate a 2-second delay
+        }
+
+    </script>
+</body>
+
+</html>

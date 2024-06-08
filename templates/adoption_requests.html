@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption Requests</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Adoption Requests</h1>
+        <div class="row">
+            {% for request in adoption_requests %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src=".." class="card-img-top" alt="{{ request.pet_name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ request.pet_name }}</h5>
+                        <p class="card-text">Requested by: {{ request.requester_username }}</p>
+                        <!-- Buttons for approving and denying -->
+                        <form action="{{ url_for('handle_request', pet_id=request.pet_id) }}" method="POST"
+                            class="d-inline">
+                            <button type="submit" name="action" value="approve"
+                                class="btn btn-success mr-2">Approve</button>
+                        </form>
+                        <form action="{{ url_for('handle_request', pet_id=request.pet_id) }}" method="POST"
+                            class="d-inline">
+                            <button type="submit" name="action" value="deny" class="btn btn-danger">Deny</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, if required) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

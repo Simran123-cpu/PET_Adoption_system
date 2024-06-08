@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS styles -->
+    <style>
+        .container {
+            margin-top: 5%;
+            background-color: rgba(255, 171, 37, 0.286);
+            height: 500px;
+            width: 900px;
+            transition: width 0.5s;
+        }
+
+        .profile-preview {
+            max-width: 200px;
+            max-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Container for profile content -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <!-- Profile content -->
+        <div class="text-center">
+            <div class="">
+                <!-- Profile title -->
+                <h1>User Profile</h1>
+                <!-- Display username -->
+                <p>Username: {{ user.username }}</p>
+            </div>
+            <!-- Form for changing password and updating profile picture -->
+            <form action="/profile" method="post" enctype="multipart/form-data" id="profileForm">
+                <div class="d-flex">
+                    <!-- Input for new password -->
+                    <label for="password">Change Password:</label>
+                    <input type="password" id="password" name="password"><br>
+                    <!-- Button to submit form -->
+                    <button type="submit" class="btn btn-primary ml-3">Update Password</button>
+                </div>
+                <div class="mt-5 d-flex  ">
+                    <!-- Input for selecting profile picture -->
+                    <input type="file" name="profile_picture" id="profilePictureInput"
+                        onchange="previewProfilePicture(event)">
+                    <!-- Container for profile picture preview -->
+                    <div id="profilePreview"></div>
+
+            </form>
+            <!-- Button to go back to the dashboard -->
+            <a href="/index.html" class="btn btn-secondary mb-0">Back to Dashboard</a>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Bootstrap JS and dependencies (not necessary for this layout) -->
+    <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript function to preview profile picture -->
+    <script>
+        function previewProfilePicture(event) {
+            const profilePreview = document.getElementById('profilePreview');
+            profilePreview.innerHTML = '';
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('profile-preview');
+                profilePreview.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+
+</html>

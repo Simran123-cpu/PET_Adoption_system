@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Pet Profile</title>
+</head>
+<style>
+    .container {
+        margin-top: 5%;
+        background-color: rgba(255, 171, 37, 0.286);
+        height: 500px;
+        width: 900px;
+        transition: width 0.5s;
+    }
+</style>
+
+<body>
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="text-center">
+            <h1>Create Pet Profile</h1>
+            <form id="create_pet" action="/create_pet" method="post" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="breed">Breed:</label>
+                <input type="text" id="breed" name="breed" required><br><br>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required><br><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+
+                <!-- Input for selecting pet profile picture -->
+                <label for="pet_profile_picture">Profile Picture:</label>
+                <input type="file" id="pet_profile_picture" name="pet_profile_picture" required><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

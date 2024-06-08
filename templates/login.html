@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <div class="main-div">
+        <div class="img">
+            <img class="pet-pic" src="{{ url_for('static', filename='image/login-pet.jpg') }}">
+        </div>
+        <div class="login">
+            <h2>Log-In</h2>
+            <form id="loginForm" action="/login" method="post">
+                <label for="username">username:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">password:</label><br>
+                <input type="password" id="password" name="password"><br><br>
+                <input type="submit" value="Login">
+            </form>
+            <p style="margin-top:30%;">Don't have an account?<a href="{{ url_for('Sign_up') }}">SIGN-UP</a></p>
+        </div>
+    </div>
+    <script>
+        // JavaScript code
+        document.getElementById("loginform").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            var formData = new FormData(this);
+
+            fetch("/login", {
+                method: "POST",
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById("message").innerText = "Login successful";
+                    } else {
+                        document.getElementById("message").innerText = "Login failed. Please check your credentials.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

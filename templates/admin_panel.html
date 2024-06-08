@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional custom styles */
+        body {
+            padding: 20px;
+        }
+
+        .pet-card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="mb-4">Admin Panel - All Pets</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div>
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="row">
+        {% for pet in all_pets %}
+        <div class="col-md-4">
+            <div class="card pet-card">
+                <div class="card-body">
+                    <img src="{{ pet.profile_picture }}" class="card-img-top" alt="Pet Image">
+                    <h5 class="card-title">{{ pet.name }}</h5>
+                    <p class="card-text"><strong>Breed:</strong> {{ pet.breed }}</p>
+                    <p class="card-text"><strong>Age:</strong> {{ pet.age }}</p>
+                    <p class="card-text"><strong>Description:</strong> {{ pet.description }}</p>
+                    <p class="card-text"><strong>Added by:</strong> {{ pet.username }}</p>
+
+                    <!-- Check if adoption request already sent -->
+                    {% if request_sent_for_pet(pet['_id']) %}
+                    <p class="text-success">Adoption request sent</p>
+                    {% else %}
+                    <!-- Adoption request form -->
+                    <form action="{{ url_for('send_adoption_request', pet_id=pet._id) }}" method="POST">
+                        <input type="hidden" name="pet_owner_username" value="{{ pet.username }}">
+                        <button type="submit" class="btn btn-primary">Send Adoption Request</button>
+                    </form>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Bootstrap JS (optional, if required) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
